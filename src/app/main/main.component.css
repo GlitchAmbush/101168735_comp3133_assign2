@@ -1,0 +1,11 @@
+table {
+    background-color: #36393e;
+}
+
+thead {
+    background-color: #7289da;
+}
+
+tr:nth-child(even) {
+    background-color: #424549;
+}
