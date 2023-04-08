@@ -2,6 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
     type Employee {
+        emp_id: Int!
         first_name: String!
         last_name: String!
         email: String!

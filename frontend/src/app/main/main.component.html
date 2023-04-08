@@ -2,7 +2,7 @@
     <h1 class="text-5xl font-bold text-center">Employee List</h1>
     
     <div class="container mx-auto w-5/6">
-        <button class="rounded-md bg-sky-500 px-5 py-2 mb-2 mt-5">Add Employee</button>
+        <button routerLink="/add-employee/_add" class="rounded-md bg-sky-500 px-5 py-2 mb-2 mt-5">Add Employee</button>
         
         <table class="w-full">
             <thead>
@@ -14,34 +14,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="pl-2">Asfi</td>
-                    <td class="pl-2 border-x">Angelis</td>
-                    <td class="pl-2 border-x">asfi@ang.ca</td>
+                <tr *ngFor="let employee of employees | async">
+                    <td class="pl-2">{{employee.first_name}}</td>
+                    <td class="pl-2 border-x">{{employee.last_name}}</td>
+                    <td class="pl-2 border-x">{{employee.email}}</td>
                     <td class="pl-2">
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">Update</button>
+                        <button [routerLink]="['/add-employee', employee.emp_id]" class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">Update</button>
                         <button class="rounded-md bg-red-600 px-5 py-2 mx-1 my-3">Delete</button>
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">View</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="pl-2">Lumina</td>
-                    <td class="pl-2 border-x">Angelis</td>
-                    <td class="pl-2 border-x">lumi@ang.ca</td>
-                    <td class="pl-2">
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">Update</button>
-                        <button class="rounded-md bg-red-600 px-5 py-2 mx-1 my-3">Delete</button>
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">View</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="pl-2">Alisha</td>
-                    <td class="pl-2 border-x">Angelis</td>
-                    <td class="pl-2 border-x">ali@ang.ca</td>
-                    <td class="pl-2">
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">Update</button>
-                        <button class="rounded-md bg-red-600 px-5 py-2 mx-1 my-3">Delete</button>
-                        <button class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">View</button>
+                        <button [routerLink]="['/view-employee', employee.emp_id]" class="rounded-md bg-sky-500 px-5 py-2 mx-1 my-3">View</button>
                     </td>
                 </tr>
             </tbody>

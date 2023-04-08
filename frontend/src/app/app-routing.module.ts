@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'add-employee/_add', component: AddEmployeeComponent },
-  { path: 'view-employee', component: ViewEmployeeComponent}
+  { path: 'add-employee/:emp_id', component: AddEmployeeComponent },
+  { path: 'view-employee/:emp_id', component: ViewEmployeeComponent}
 ];
 
 @NgModule({
