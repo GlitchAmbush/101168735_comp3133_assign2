@@ -34,7 +34,7 @@ const typeDefs = gql`
     type Query {
         matchUserPassword(username: String!, password: String!): User!
         getAllEmployees: [Employee!]!
-        getEmployeeByID(ID: ID!): Employee!
+        getEmployeeByID(emp_id: Int!): Employee!
     }
 
     # Mutations

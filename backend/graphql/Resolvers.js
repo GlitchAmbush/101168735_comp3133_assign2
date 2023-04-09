@@ -7,8 +7,8 @@ const resolvers = {
             return Employee.find()
         },
 
-        async getEmployeeByID(_, { ID }) {
-            return await Employee.findById(ID)
+        async getEmployeeByID(_, { emp_id }) {
+            return await Employee.findOne({ emp_id: emp_id })
         },
 
         async matchUserPassword(_, { username, password }) {
@@ -32,8 +32,9 @@ const resolvers = {
             }
         },
 
-        async createEmployee(_, { employeeInput: { first_name, last_name, email, gender, salary } }) {
+        async createEmployee(_, { employeeInput: { emp_id, first_name, last_name, email, gender, salary } }) {
             const createdEmployee = new Employee({
+                emp_id: emp_id,
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
@@ -49,14 +50,14 @@ const resolvers = {
             }
         },
 
-        async deleteEmployee(_, { ID }) {
-            const wasDeleted = (await Employee.deleteOne({ _id: ID })).deletedCount
+        async deleteEmployee(_, { emp_id }) {
+            const wasDeleted = (await Employee.deleteOne(emp_id)).deletedCount
 
             return wasDeleted
         },
 
-        async editEmployee(_, { ID,  employeeInput: { first_name, last_name, email, gender, salary }}) {
-            const wasEdited = (await Employee.updateOne({ _id: ID }, { first_name: first_name, last_name: last_name, email: email, gender: gender, salary: salary })).modifiedCount
+        async editEmployee(_, { emp_id,  employeeInput: { first_name, last_name, email, gender, salary }}) {
+            const wasEdited = (await Employee.updateOne({ emp_id }, { first_name: first_name, last_name: last_name, email: email, gender: gender, salary: salary })).modifiedCount
             return wasEdited
         }
     }
