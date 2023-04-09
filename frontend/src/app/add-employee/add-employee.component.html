@@ -1,20 +1,20 @@
 <div class="container mx-auto pt-5">
-    <h1 class="text-5xl font-bold text-center">Add Employee</h1>
+    <h1 class="text-5xl font-bold text-center">{{title}} Employee</h1>
     
     <div class="p-10">
-        <form>
-            <input class="rounded w-full h-10 mb-2 p-2" placeholder="First Name" />
-            <input class="rounded w-full h-10 mb-2 p-2" placeholder="Last Name" />
-            <input class="rounded w-full h-10 mb-2 p-2" placeholder="email" />
+        <form autocomplete="off">
+            <input [(ngModel)]="employee.first_name" id="first_name" class="text-black rounded w-full h-10 mb-2 p-2" placeholder="First Name" required/>
+            <input [(ngModel)]="employee.last_name" id="last_name" class="text-black rounded w-full h-10 mb-2 p-2" placeholder="Last Name" required/>
+            <input [(ngModel)]="employee.email" type="email" id="email" class="text-black rounded w-full h-10 mb-2 p-2" placeholder="example@example.com" required/>
             <div class="pb-2 text-xl">
-                Gender: <input class="mx-1" type="radio" name="gender" value="Male" /> <label class="mr-5">Male</label>
-                <input class="mr-1" type="radio" name="gender" value="Female" /> <label class="mr-5">Female</label>
-                <input class="mr-1" type="radio" name="gender" value="Other" /> <label class="mr-5">Other</label>
+                Gender: <input [(ngModel)]="employee.gender" class="mx-1" type="radio" id="male" name="gender" value="Male" required/> <label class="mr-5" for="male">Male</label>
+                <input [(ngModel)]="employee.gender" class="mr-1" type="radio" id="female" name="gender" value="Female" /> <label class="mr-5" for="female">Female</label>
+                <input [(ngModel)]="employee.gender" class="mr-1" type="radio" id="other" name="gender" value="Other" /> <label class="mr-5" for="other">Other</label>
             </div>
-            <input class="rounded w-full h-10 mb-2 p-2" placeholder="Salary" />
+            <input [(ngModel)]="employee.salary" id="salary" class="text-black rounded w-full h-10 mb-2 p-2" placeholder="Salary" required/>
         </form>
-        
-        <button class="rounded-md bg-sky-500 px-5 py-2 mr-2">Save</button>
+
+        <input type="submit" class="rounded-md bg-sky-500 px-5 py-2 mr-2" (click)="create()">
         <button routerLink="/" class="rounded-md bg-red-500 px-5 py-2 mr-2">Cancel</button>
     </div>
 </div>

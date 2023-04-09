@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.employees = this.apollo
-      .watchQuery<any>({ query: GET_EMPLOYEES, })
+      .watchQuery<any>({ query: GET_EMPLOYEES })
       .valueChanges.pipe(map(result => {
         console.log(result.data.getAllEmployees)
         return result.data.getAllEmployees
